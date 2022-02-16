@@ -346,9 +346,12 @@ mod tests {
     </testcase>
     <testcase name=\"error test\" time=\"5\">
       <error type=\"git error\" message=\"unable to fetch\"><![CDATA[Some syserror message]]></error>
+      <system-err><![CDATA[Some syserror message]]></system-err>
     </testcase>
     <testcase name=\"failure test\" time=\"10\">
       <failure type=\"assert_eq\" message=\"not equal\"><![CDATA[System out or error message]]><![CDATA[Another system error message]]></failure>
+      <system-out><![CDATA[System out or error message]]></system-out>
+      <system-err><![CDATA[Another system error message]]></system-err>
     </testcase>
   </testsuite>
 </testsuites>"

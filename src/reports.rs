@@ -95,17 +95,6 @@ impl Report {
 
                 match tc.result {
                     TestResult::Success => {
-                        if let Some(system_out) = &tc.system_out {
-                            ew.write(XmlEvent::start_element("system-out"))?;
-                            ew.write(XmlEvent::CData(system_out.as_str()))?;
-                            ew.write(XmlEvent::end_element())?;
-                        }
-
-                        if let Some(system_err) = &tc.system_err {
-                            ew.write(XmlEvent::start_element("system-err"))?;
-                            ew.write(XmlEvent::CData(system_err.as_str()))?;
-                            ew.write(XmlEvent::end_element())?;
-                        }
                     }
                     TestResult::Error {
                         ref type_,
@@ -150,6 +139,18 @@ impl Report {
                         ew.write(XmlEvent::end_element())?;
                     }
                 };
+
+                if let Some(system_out) = &tc.system_out {
+                    ew.write(XmlEvent::start_element("system-out"))?;
+                    ew.write(XmlEvent::CData(system_out.as_str()))?;
+                    ew.write(XmlEvent::end_element())?;
+                }
+
+                if let Some(system_err) = &tc.system_err {
+                    ew.write(XmlEvent::start_element("system-err"))?;
+                    ew.write(XmlEvent::CData(system_err.as_str()))?;
+                    ew.write(XmlEvent::end_element())?;
+                }
 
                 ew.write(XmlEvent::end_element())?;
             }
