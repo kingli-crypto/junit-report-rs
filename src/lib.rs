@@ -365,7 +365,7 @@ mod tests {
       <failure type=\"assert_eq\" message=\"not equal\"><![CDATA[System out or error message]]><![CDATA[Another system error message]]></failure>\
     </testcase>\
   </testsuite>\
-</testsuites>",
+</testsuites>"
         );
     }
 }
