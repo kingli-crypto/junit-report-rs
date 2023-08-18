@@ -91,11 +91,14 @@ impl Report {
                     testcase_element = testcase_element.attr("file", filepath);
                 }
 
+                if let Some(owner) = &tc.owner {
+                    testcase_element = testcase_element.attr("owner", owner);
+                }
+
                 ew.write(testcase_element)?;
 
                 match tc.result {
-                    TestResult::Success => {
-                    }
+                    TestResult::Success => {}
                     TestResult::Error {
                         ref type_,
                         ref message,

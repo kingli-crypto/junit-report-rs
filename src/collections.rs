@@ -142,6 +142,8 @@ pub struct TestCase {
     pub filepath: Option<String>,
     pub system_out: Option<String>,
     pub system_err: Option<String>,
+    pub error_message: Option<String>,
+    pub owner: Option<String>,
 }
 
 /// Result of a test case
@@ -164,7 +166,14 @@ impl TestCase {
             filepath: None,
             system_out: None,
             system_err: None,
+            error_message: None,
+            owner: None,
         }
+    }
+
+    /// Set the `owner` for the `Testcase`
+    pub fn set_owner(&mut self, owner: &str) {
+        self.owner = Some(owner.to_owned());
     }
 
     /// Set the `classname` for the `TestCase`
@@ -207,6 +216,8 @@ impl TestCase {
             filepath: None,
             system_out: None,
             system_err: None,
+            error_message: None,
+            owner: None,
         }
     }
 
@@ -230,6 +241,8 @@ impl TestCase {
             filepath: None,
             system_out: None,
             system_err: None,
+            error_message: None,
+            owner: None,
         }
     }
 
@@ -250,6 +263,8 @@ impl TestCase {
             filepath: None,
             system_out: None,
             system_err: None,
+            error_message: None,
+            owner: None,
         }
     }
 
@@ -273,6 +288,11 @@ impl TestCaseBuilder {
         }
     }
 
+    pub fn set_owner(&mut self, owner: &str) -> &mut Self {
+        self.testcase.owner = Some(owner.to_owned());
+        self
+    }
+
     /// Set the `classname` for the `TestCase`
     pub fn set_classname(&mut self, classname: &str) -> &mut Self {
         self.testcase.classname = Some(classname.to_owned());
@@ -294,6 +314,12 @@ impl TestCaseBuilder {
     /// Set the `system_err` for the `TestCase`
     pub fn set_system_err(&mut self, system_err: &str) -> &mut Self {
         self.testcase.system_err = Some(system_err.to_owned());
+        self
+    }
+
+    /// Set the `error` for `TestCase`
+    pub fn set_error_message(&mut self, error_message: &str) -> &mut Self {
+        self.testcase.error_message = Some(error_message.to_owned());
         self
     }
 

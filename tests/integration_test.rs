@@ -80,6 +80,7 @@ fn validate_generated_xml_schema() {
 
     let test_success = TestCaseBuilder::success("MyTest3", Duration::seconds(15))
         .set_classname("MyClass")
+        .set_owner("Jason")
         .build();
     let test_error = TestCase::error(
         "Blabla",
